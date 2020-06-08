@@ -19,26 +19,11 @@ public class JpaMain {
 
         try {
 
-            // 비영속
             Member member = new Member();
-            member.setId(201L);
-            member.setName("eme200L");
+            member.setId(1L);
+            member.setRoleType(RoleType.ADMIN);
 
-            System.out.println("\"=========================== BEFORE");
-
-            // 영속
             entityManager.persist(member);
-
-            entityManager.flush();
-
-            //준영속
-//            entityManager.detach(member);
-
-            System.out.println("=========================== AFTER");
-//            Member findMember = entityManager.find(Member.class, 100L);
-//            System.out.println("findMember.getId : " + findMember.getId());
-//            System.out.println("findMember.getName : " + findMember.getName());
-
 
             // commit 하기 직전에 체크해서 데이터 변경된 걸 보고 업데이트 쿼리를 날린다.
             transaction.commit();
