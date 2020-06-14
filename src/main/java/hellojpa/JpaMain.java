@@ -1,6 +1,7 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.util.List;
 
 public class JpaMain {
@@ -20,7 +21,7 @@ public class JpaMain {
         try {
 
             Member member = new Member();
-            member.setId(1L);
+//            member.setId("ID_A");
             member.setRoleType(RoleType.ADMIN);
 
             entityManager.persist(member);

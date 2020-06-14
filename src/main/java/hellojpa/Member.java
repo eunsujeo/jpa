@@ -10,6 +10,7 @@ import java.util.Date;
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", insertable = true, updatable = true, columnDefinition = "varchar(100) default 'EMPTY'")
