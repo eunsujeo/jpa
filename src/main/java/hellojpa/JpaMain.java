@@ -1,8 +1,9 @@
 package hellojpa;
 
+import hellojpa.coding.Member;
+import hellojpa.coding.Team;
+
 import javax.persistence.*;
-import java.io.IOException;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -20,11 +21,18 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-//            member.setId("ID_A");
-            member.setRoleType(RoleType.ADMIN);
+            Team team = new Team();
+            team.setName("TeamA");
+            entityManager.persist(team);
 
+            Member member = new Member();
+            member.setUsername("member1");
+            member.changeTeam(team);
             entityManager.persist(member);
+
+            entityManager.flush();
+            entityManager.clear();
+
 
             // commit 하기 직전에 체크해서 데이터 변경된 걸 보고 업데이트 쿼리를 날린다.
             transaction.commit();
