@@ -20,19 +20,14 @@ public class JpaMain {
         transaction.begin();
 
         try {
-
-            Team team = new Team();
-            team.setName("TeamA");
-            entityManager.persist(team);
-
             Member member = new Member();
-            member.setUsername("member1");
-            member.changeTeam(team);
+            member.setUsername("memver1");
             entityManager.persist(member);
 
-            entityManager.flush();
-            entityManager.clear();
+            Team team = new Team();
+            team.setName("TEAM_A");
 
+            team.getMembers().add(member);
 
             // commit 하기 직전에 체크해서 데이터 변경된 걸 보고 업데이트 쿼리를 날린다.
             transaction.commit();
